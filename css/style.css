@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #3d4152;
+  font-family: "Poppins", sans-serif;
+}
+.navigation {
+  position: fixed;
+  inset: 20px 0 20px 20px;
+  width: 75px;
+  background-color: white;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigation.active {
+  width: 250px;
+}
+.navigation .menutoggle {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 23px;
+}
+.navigation .menutoggle::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 30px;
+  transform: translateY(-8px);
+  transition: 0.5s;
+  background: #333;
+}
+.navigation.active .menutoggle::before {
+  transform: translateY(0px) rotate(45deg);
+}
+.navigation .menutoggle::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 30px;
+  transform: translateY(8px);
+  transition: 0.5s;
+  background: #333;
+  box-shadow: 0 -8px 0 #333;
+}
+.navigation.active .menutoggle::after {
+  box-shadow: 0 0px 0 #333;
+  transform: translateY(0px) rotate(-45deg);
+}
+.navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.navigation ul li {
+  list-style: none;
+  width: 100%;
+  height: 60px;
+  padding: 0px 10px;
+  transition: 0.5s;
+  position: relative;
+}
+.navigation ul li.act {
+  transform: translateX(30px);
+}
+.navigation ul li a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  text-decoration: none;
+}
+.navigation ul li a .icon {
+  position: relative;
+  min-width: 55px;
+  height: 55px;
+  line-height: 55px;
+  display: block;
+  transition: 0.5s;
+  color: #222;
+  font-size: 1.7em;
+  border-radius: 10px;
+}
+
+.navigation ul li.act a .icon {
+  background: var(--clr);
+  color: #fff;
+}
+.navigation ul li a .icon::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr);
+  filter: blur(8px);
+  opacity: 0;
+  transition: 0.5s;
+}
+.navigation ul li.act a .icon::before {
+  opacity: 1;
+}
+.navigation ul li a .text {
+  position: relative;
+  padding: 0px 15px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.navigation.active ul li a .text {
+  opacity: 1;
+  visibility: visible;
+}
+.navigation ul li.act a .text {
+  color: var(--clr);
+}
